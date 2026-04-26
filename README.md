@@ -8,7 +8,7 @@ Krótki projekt przedstawiający wysokodostępną infrastrukturę aplikacyjną o
 
 Środowisko zbudowane na platformie **VMware vSphere**:
 
-* **ESXi (10.82.4.190)** – host zarządzający
+* **ESXi (10.0.0.1)** – host zarządzający
 * **vCenter Server** – centralne zarządzanie klastrem
 * **Linux1 & Linux2 (Ubuntu)** – serwery aplikacyjne (klaster)
 
@@ -16,7 +16,7 @@ Krótki projekt przedstawiający wysokodostępną infrastrukturę aplikacyjną o
 
 ## 💾 Współdzielona pamięć (NFS)
 
-* **Serwer NFS:** `10.82.4.58`
+* **Serwer NFS:** `10.0.0.2`
 * **Mount point:** `/mnt/nfs`
 * Automatyczne montowanie przez `/etc/fstab`
 * Przechowywanie plików aplikacji (wspólne dane dla obu węzłów)
@@ -42,7 +42,7 @@ Architektura **Reverse Proxy**:
 
 Realizacja przez **Keepalived**:
 
-* **VIP:** `10.82.4.155`
+* **VIP:** `10.0.0.3`
 * Tryb **MASTER/BACKUP**
 * Automatyczny failover przy awarii
 * Eliminacja pojedynczego punktu awarii (SPOF)
@@ -53,11 +53,11 @@ Realizacja przez **Keepalived**:
 
 | Komponent         | Adres IP    | Opis                   |
 | ----------------- | ----------- | ---------------------- |
-| ESXi              | 10.82.4.190 | Host fizyczny          |
-| NFS Server        | 10.82.4.58  | Współdzielony storage  |
-| Linux1            | 10.82.4.154 | Węzeł klastra          |
-| Linux2            | 10.82.4.194 | Węzeł klastra          |
-| VIP (WWW Cluster) | 10.82.4.155 | Publiczny adres usługi |
+| ESXi              | 10.0.0.1    | Host fizyczny          |
+| NFS Server        | 10.0.0.2    | Współdzielony storage  |
+| Linux1            | 10.0.0.4    | Węzeł klastra          |
+| Linux2            | 10.0.0.5    | Węzeł klastra          |
+| VIP (WWW Cluster) | 10.0.0.3    | Publiczny adres usługi |
 
 ---
 
